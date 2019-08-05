@@ -1,0 +1,25 @@
+{
+    "name": "andybeak/envelope_encryption",
+    "description": "This package makes it more convenient to perform envelope encryption.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrew Beak",
+            "email": "andy.beak@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.2.18",
+        "aws/aws-sdk-php": "^3.0@dev"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "AndyBeak\\EnvelopeEncryption\\": "src"
+        }
+    }
+}

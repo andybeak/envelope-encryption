@@ -1,0 +1,30 @@
+sudo: required
+language: php
+dist: bionic
+
+php:
+  - 7.2
+
+branches:
+  only:
+    - master
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+
+install:
+  - travis_retry composer install --prefer-dist --no-suggest --no-interaction
+
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
+script:
+  - "vendor/bin/phpunit --coverage-text --coverage-clover build/logs/clover.xml"
+
+
+after_script:
+  - ./cc-test-reporter after-build --coverage-input-type clover --id 73865ba70ca25aced37e5aedffb39da64abcb54083e8251f3e2f5d606408de93 --exit-code $TRAVIS_TEST_RESULT
